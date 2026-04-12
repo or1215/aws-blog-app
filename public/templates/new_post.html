@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規投稿</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>新規投稿</h1>
+    </header>
+    <main>
+        <form method="POST" enctype="multipart/form-data">
+            <label>タイトル</label>
+            <input type="text" name="title" required>
+            <label>本文</label>
+            <textarea name="content" required></textarea>
+            <label>サムネイル画像（任意）</label>
+            <input type="file" name="image" accept="image/*">
+            <button type="submit" class="btn">投稿する</button>
+            <a href="/" class="btn-back">戻る</a>
+        </form>
+    </main>
+</body>
+</html>
