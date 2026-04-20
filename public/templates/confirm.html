@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}メール認証{% endblock %}
+{% block content %}
+    <p>登録したメールアドレスに認証コードを送信しました。</p>
+    <form method="POST">
+        <input type="hidden" name="email" value="{{ email }}">
+        <label>認証コード</label>
+        <input type="text" name="code" required>
+        <button type="submit" class="btn">認証する</button>
+    </form>
+{% endblock %}

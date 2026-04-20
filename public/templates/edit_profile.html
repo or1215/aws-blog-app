@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="edit-profile-container">
+    <h2>プロフィール編集</h2>
+    <form method="POST" class="profile-form" enctype="multipart/form-data">
+        <div class="profile-avatar-section">
+            <div class="avatar-wrapper" id="avatarTrigger" style="cursor: pointer;">
+                {% if user.profile_image_url %}
+                <img src="{{ user.profile_image_url }}" class="profile-image">
+                {% else %}
+                <span class="default-emoji">👤</span>
+                {% endif %}
+                <div class="avatar-hover-mask">
+                    <i class="fas fa-camera"></i> <span>編集</span>
+                </div>
+            </div>
+        </div>
+        <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
+        <div class="form-body">
+            <div class="form-group readonly-field">
+                <label for="username">ユーザーID（Cognito Sub）</label>
+                <div class="input-wrapper">
+                    <input type="text" id="username" value="{{ user.cognito_sub }}" disabled>
+                    <i class="fas fa-lock lock-icon"></i> </div>
+                <small class="field-help">※このIDはシステムによって固定されています</small>
+            </div>
+
+            <div class="form-group">
+                <label for="display_name">表示名</label>
+                <input type="text" name="display_name" id="display_name" 
+                        value="{{ user.display_name }}" required placeholder="ニックネームを入力">
+            </div>
+
+            <div class="form-group">
+                <label for="bio">自己紹介</label>
+                <textarea name="bio" id="bio" rows="5" placeholder="あなたのことを自由に教えてください">{{ user.bio or '' }}</textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <a href="{{ url_for('index') }}" class="btn-cancel">キャンセル</a>
+            <button type="submit" class="btn-update">
+                <span>変更を保存</span>
+                <i class="fas fa-save"></i>
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

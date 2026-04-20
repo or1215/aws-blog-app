@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Blog{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/flash.css">
+    <script src="/static/js/messages.js"></script>
+    <script src="/static/js/file.js"></script>
+</head>
+<body>
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+                <h1 class="logo"><a href="/">Blog<span>.</span></a></h1>
+                
+                <nav class="side-nav">
+                    <a href="/" class="nav-item">🏠 ホーム</a>
+                    <a href="/post/new" class="nav-item">✍️ 記事を書く</a>
+                    
+                    <div class="nav-divider"></div>
+
+                    {% if session.user_info %}
+                        <div class="sidebar-user-card">
+                            <div class="sidebar-user-icon">
+                                {% if session.user_info.profile_image_url %}
+                                    <img src="{{ session.user_info.profile_image_url }}" alt="User Icon">
+                                {% else %}
+                                    <span class="sidebar-default-emoji">👤</span>
+                                {% endif %}
+                            </div>
+                            <div class="sidebar-user-info">
+                                <span class="user-name">{{ session.user_info.display_name }}</span>
+                                <a href="/profile/edit" class="edit-link">設定を変更</a>
+                            </div>
+                        </div>
+
+                        <a href="/logout" class="nav-item btn-logout">🚪 ログアウト</a>
+                    {% else %}
+                        <a href="/login" class="nav-item">🔑 ログイン</a>
+                        <a href="/register" class="nav-item">🆕 新規登録</a>
+                    {% endif %}
+                </nav>
+            </div>
+        </aside>
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <div class="right-space"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン | Modern Login</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/messages.js"></script>
+</head>
+<body>
+    <!-- フラッシュメッセージの表示 -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(category_filter=["error"]) %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="flash-error">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+    <div class="login-card">
+        <h1>Welcome Back</h1>
+        <p class="subtitle">おかえりなさい！ログインしてください。</p>
+        
+        <form method="POST">
+            <div class="input-field">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" placeholder="name@company.com" required>
+            </div>
+            
+            <div class="input-field">
+                <label for="password">パスワード</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="btn-submit">ログイン</button>
+        </form>
+
+        <div class="footer">
+            <p>アカウントをお持ちでないですか？ <a href="/register">新規登録</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

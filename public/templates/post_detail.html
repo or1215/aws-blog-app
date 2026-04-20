@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ post[1] }}</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>{{ post[1] }}</h1>
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+<article class="post-detail">
+    <header class="post-header">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <div class="post-meta">
+            <span class="date">📅 {{ post.created_at }}</span>
+        </div>
     </header>
-    <main>
-        <p class="date">{{ post[3] }}</p>
-        {% if post[4] %}
-        <img src="{{ post[4] }}" alt="サムネイル" style="width:100%;max-height:400px;object-fit:cover;border-radius:5px;margin:10px 0;">
-        {% endif %}
-        <div class="content">{{ post[2] }}</div>
-        <a href="/" class="btn">一覧に戻る</a>
-        <form method="POST" action="/post/{{ post[0] }}/delete" style="display:inline;">
-            <button type="submit" class="btn-delete" onclick="return confirm('削除しますか？')">削除</button>
+    {% if post.image_url %}
+    <div class="post-hero">
+        <img src="{{ post.image_url }}" alt="サムネイル">
+    </div>
+    {% endif %}
+    <div class="post-content">
+        {{ post.content | safe }} 
+    </div>
+    <footer class="post-footer">
+        <a href="/" class="btn-back">← 一覧に戻る</a>
+        {% if session.user_info and session.user_info.cognito_sub == post.cognito_sub %}
+        <form method="POST" action="/post/{{ post.id }}/delete" class="delete-form">
+            <button type="submit" class="btn-delete" onclick="return confirm('この記事を完全に削除しますか？')">
+                🗑️ 記事を削除
+            </button>
         </form>
-    </main>
-</body>
-</html>
+        {% endif %}
+    </footer>
+</article>
+{% endblock %}

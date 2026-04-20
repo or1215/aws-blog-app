@@ -1,26 +1,36 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新規投稿</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>新規投稿</h1>
+{% extends 'base.html' %}
+{% block title %}新規投稿{% endblock %}
+
+{% block content %}
+<div class="post-detail">
+    <header class="content-header">
+        <h2>✍️ 新しい記事を書く</h2>
+        <p>あなたの考えを共有しましょう</p>
     </header>
-    <main>
-        <form method="POST" enctype="multipart/form-data">
-            <label>タイトル</label>
-            <input type="text" name="title" required>
-            <label>本文</label>
-            <textarea name="content" required></textarea>
-            <label>サムネイル画像（任意）</label>
-            <input type="file" name="image" accept="image/*">
-            <button type="submit" class="btn">投稿する</button>
-            <a href="/" class="btn-back">戻る</a>
-        </form>
-    </main>
-</body>
-</html>
+
+    <form method="POST" enctype="multipart/form-data" class="editor-form">
+        <div class="form-group">
+            <label for="title">タイトル</label>
+            <input type="text" id="title" name="title" placeholder="心をつかむタイトルを..." required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">本文</label>
+            <textarea id="content" name="content" placeholder="ここには何でも自由に書いてください..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="image" class="file-label">
+                <span class="icon">🖼️</span> サムネイル画像（任意）
+            </label>
+            <input type="file" id="image" name="image" accept="image/*" class="input-file">
+            <p class="help-text">JPG, PNG, WebP形式に対応しています</p>
+        </div>
+
+        <div class="post-footer">
+            <a href="/" class="btn-back">← キャンセル</a>
+            <button type="submit" class="btn-submit-action">記事を公開する</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

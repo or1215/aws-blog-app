@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録 | Modern Signup</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/messages.js"></script>
+</head>
+<body>
+    <!-- フラッシュメッセージの表示 -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(category_filter=["error"]) %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="flash-error">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+    <div class="signup-card">
+        <h1>新規登録</h1>
+        <p class="subtitle">新しいアカウントを作成して始めましょう</p>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="username">ユーザー名</label>
+                <input type="text" id="username" name="username" placeholder="例：サトシ" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" placeholder="name@company.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" id="password" name="password" placeholder="記号を含めてください" required>
+            </div>
+            
+            <button type="submit" class="btn-submit">無料で登録する</button>
+        </form>
+
+        <div class="footer">
+            <p>すでにアカウントをお持ちですか？ <a href="/login">ログイン</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

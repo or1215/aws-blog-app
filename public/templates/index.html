@@ -1,30 +1,41 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ブログ</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>ブログ</h1>
+{% extends 'base.html' %}
+{% block title %}記事一覧{% endblock %}
+
+{% block content %}
+    <header class="content-header">
+        <h2>Latest Feed</h2>
+        <p>最新の投稿をチェックしましょう</p>
     </header>
-    <main>
-        <a href="/post/new" class="btn">新規投稿</a>
-        <br><br>
+
+    <div class="post-feed">
         {% for post in posts %}
-        <div class="post-card">
-            {% if post[4] %}
-            <img src="{{ post[4] }}" alt="サムネイル" style="width:100%;max-height:200px;object-fit:cover;border-radius:5px;">
+        <article class="post-card">
+            {% if post.image_url %}
+            <div class="post-thumb">
+                <img src="{{ post.image_url }}" alt="サムネイル">
+            </div>
             {% endif %}
-            <h2><a href="/post/{{ post[0] }}">{{ post[1] }}</a></h2>
-            <p class="date">{{ post[3] }}</p>
-            <p>{{ post[2][:100] }}...</p>
-        </div>
+            <div class="post-body">
+                <div class="post-meta-wrapper">
+                    <!-- <span class="post-author">👤 {{ post.author_name or '匿名' }}</span> -->
+                    <span class="post-user-image">
+                    {% if post.user_image %}
+                        <img src="{{ post.user_image }}" alt="ユーザーアイコン">
+                    {% else %}
+                        <span class="default-emoji">👤</span>
+                    {% endif %}
+                    </span>
+                    <span class="post-divider">|</span>
+                    <span class="post-date">{{ post.display_name }}</span>
+                </div>
+                <span class="post-date">{{ post.created_at }}</span>
+                <h3><a href="/post/{{ post.id }}">{{ post.title }}</a></h3>
+                <p>{{ post.content[:100] }}...</p>
+                <a href="/post/{{ post.id }}" class="read-more">続きを読む →</a>
+            </div>
+        </article>
         {% else %}
-        <p>まだ投稿がありません。</p>
+        <p class="empty-msg">まだ記事がありません。</p>
         {% endfor %}
-    </main>
-</body>
-</html>
+    </div>
+{% endblock %}
