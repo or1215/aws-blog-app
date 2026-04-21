@@ -562,16 +562,14 @@ body {
     gap: 10px;
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
 }
-
 .btn-update:hover {
     transform: translateY(-2px); /* 少し浮く */
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
 }
-
 .btn-update:active {
     transform: translateY(1px);
 }
-
+/* キャンセルボタン */
 .btn-cancel {
     color: #95a5a6;
     text-decoration: none;
@@ -579,7 +577,6 @@ body {
     font-weight: 500;
     transition: color 0.2s;
 }
-
 .btn-cancel:hover {
     color: #e74c3c; /* キャンセルは赤色にホバー */
     text-decoration: underline;

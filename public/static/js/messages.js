@@ -21,16 +21,20 @@ function clearElement(element) {
 /* エラーメッセージの消去 */
 /* -------------------------------- */
 function clearerror() {
-    const flashMessages = document.querySelector('.flash-error');
+    const flashMessages = document.querySelectorAll('.flash-error');
     if (!flashMessages) return;
 
-    flashMessages.addEventListener('click', function() {
-        clearElement(flashMessages);
+    flashMessages.forEach(message => {
+        message.addEventListener('click', function() {
+            clearElement(message);
+        });
     });
 
     // 5秒後に自動で消去
     setTimeout(() => {
-        clearElement(flashMessages);
+        flashMessages.forEach(message => {
+            clearElement(message);
+        });
     }, 5000);
 }
 
@@ -38,15 +42,19 @@ function clearerror() {
 /* 成功メッセージの消去 */
 /* -------------------------------- */
 function clearSuccess() {
-    const flashMessages = document.querySelector('.flash-success');
+    const flashMessages = document.querySelectorAll('.flash-success');
     if (!flashMessages) return;
 
-    flashMessages.addEventListener('click', function() {
-        clearElement(flashMessages);
+    flashMessages.forEach(message => {
+        message.addEventListener('click', function() {
+            clearElement(message);
+        });
     });
 
     // 5秒後に自動で消去
     setTimeout(() => {
-        clearElement(flashMessages);
+        flashMessages.forEach(message => {
+            clearElement(message);
+        });
     }, 5000);
 }

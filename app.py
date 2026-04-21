@@ -320,6 +320,9 @@ def login():
                             print(f"ユーザー登録エラー: {e}")
                             flash('ユーザー情報の保存に失敗しました。', 'error')
                 # ユーザー情報をまるごとセッションに保存（RDSを見に行かなくて済むように）
+                if not user_in_db:
+                    flash('ユーザー情報の取得に失敗しました。', 'error')
+                    return redirect(url_for('login'))
                 if user_in_db.get('created_at'):
                     user_in_db['created_at'] = user_in_db['created_at'].isoformat()
                 session['user_info'] = user_in_db
