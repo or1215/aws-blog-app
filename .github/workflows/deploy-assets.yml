@@ -1,0 +1,35 @@
+name: Deploy Static Assets to S3
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'public/static/**' # staticフォルダ以下が変更された時だけ動く設定
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ap-northeast-1
+
+      - name: Sync S3
+        # 画像から確認したバケット名
+        run: aws s3 sync ./public/static/ s3://blog-images-2026/static/ --delete
+
+      - name: CloudFront Invalidation
+        # 画像から確認したディストリビューションID
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E275V7V68M417A \
+            --paths "/*"
