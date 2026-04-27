@@ -1,11 +1,52 @@
-{% extends 'base.html' %}
-{% block title %}メール認証{% endblock %}
-{% block content %}
-    <p>登録したメールアドレスに認証コードを送信しました。</p>
-    <form method="POST">
-        <input type="hidden" name="email" value="{{ email }}">
-        <label>認証コード</label>
-        <input type="text" name="code" required>
-        <button type="submit" class="btn">認証する</button>
-    </form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メール認証</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/flash.css">
+    <script src="/static/js/messages.js"></script>
+</head>
+<body>
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(category_filter=["error"]) %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="flash-error">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="login-card">
+        <div class="icon-wrap">
+            <!-- メールアイコン -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+            </svg>
+        </div>
+
+        <h1>メール認証</h1>
+        <p class="subtitle">登録したメールアドレスに<br>認証コードを送信しました。</p>
+
+        <form method="POST">
+            <input type="hidden" name="email" value="{{ email }}">
+            <div class="input-field">
+                <label for="code">認証コード</label>
+                <input type="text" id="code" name="code" placeholder="000000" maxlength="6" required>
+            </div>
+            <button type="submit" class="btn-submit">認証する</button>
+        </form>
+
+        <!-- <p style="text-align:center; margin-top:1rem; font-size:13px;">
+            コードが届かない場合は <a href="/resend">再送信する</a>
+        </p> -->
+        <div class="footer">
+            <a href="/login">ログインに戻る</a>
+        </div>
+    </div>
+</body>
+</html>

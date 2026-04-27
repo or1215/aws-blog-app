@@ -128,6 +128,19 @@ input:focus {
     text-decoration: underline;
 }
 
+/* メール認証用 */
+.icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #e8f0fe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #4a6cf7;
+}
+
 /* PC向けの微調整 */
 @media (min-width: 768px) {
     .login-card {
