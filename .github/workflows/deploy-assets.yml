@@ -6,6 +6,7 @@ on:
     paths:
       - 'frontend/**'
       - 'public/**'
+      - '.github/workflows/deploy-assets.yml'
 
 jobs:
   deploy:
