@@ -13,9 +13,7 @@
         <img src="{{ post.image_url }}" alt="サムネイル">
     </div>
     {% endif %}
-    <div class="post-content">
-        {{ post.content | safe }} 
-    </div>
+    <div class="post-content">{{ post.content | safe }}</div>
     <footer class="post-footer">
         <a href="/" class="btn-back">← 一覧に戻る</a>
         {% if session.user_info and session.user_info.cognito_sub == post.cognito_sub %}
