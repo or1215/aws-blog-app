@@ -17,9 +17,11 @@
     --sidebar-width: 260px;
     --max-width: 1300px;
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--bg-body);
@@ -43,7 +45,6 @@ body {
     max-width: 680px; 
     padding: 12px;
 }
-
 .right-space {
     width: 200px;
     flex-shrink: 0;
@@ -60,12 +61,19 @@ body {
     position: sticky;
     top: 40px;
 }
-
 /* ロゴの設定 */
-.logo { margin-bottom: 30px; font-size: 1.8rem; font-weight: 800; }
-.logo a { text-decoration: none; color: var(--text-main); }
-.logo span { color: var(--primary); }
-
+.logo {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+.logo a { 
+    text-decoration: none;
+    color: var(--text-main);
+}
+.logo span { 
+    color: var(--primary); 
+}
 /* サイドバー内のユーザーカード */
 .sidebar-user-card {
     display: flex;
@@ -135,7 +143,6 @@ body {
     background: #e2e8f0;
     margin: 10px 0;
 }
-
 /* ログアウトボタンの微調整 */
 .btn-logout {
     color: #e74c3c !important;
@@ -149,8 +156,13 @@ body {
 /* ==========================================================================
    Post Components (記事一覧 & 詳細)
    ========================================================================== */
-.content-header { margin-bottom: 30px; }
-.content-header h2 { font-size: 1.5rem; font-weight: 800; }
+.content-header { 
+    margin-bottom: 30px;
+}
+.content-header h2 { 
+    font-size: 1.5rem; 
+    font-weight: 800;
+}
 /* 記事カード */
 .post-card {
     background: var(--bg-card);
@@ -160,18 +172,40 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
     transition: transform 0.3s;
 }
-.post-card:hover { transform: translateY(-4px); }
+.post-card:hover { 
+    transform: translateY(-4px);
+}
 .post-card, .post-detail {
     background: var(--bg-card);
     border-radius: 20px;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
 }
-.post-thumb img { width: 100%; height: 220px; object-fit: cover; }
-.post-body { padding: 24px; }
-.post-date { font-size: 0.85rem; color: var(--text-sub); }
-.post-body h3 { margin: 8px 0; }
-.post-body h3 a { color: var(--text-main); text-decoration: none; }
-.read-more { display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700; text-decoration: none; }
+.post-thumb img { 
+    width: 100%; 
+    height: 220px; 
+    object-fit: cover; 
+}
+.post-body { 
+    padding: 24px; 
+}
+.post-date { 
+    font-size: 0.85rem; 
+    color: var(--text-sub); 
+}
+.post-body h3 { 
+    margin: 8px 0; 
+}
+.post-body h3 a { 
+    color: var(--text-main); 
+    text-decoration: none; 
+}
+.read-more { 
+    display: inline-block; 
+    margin-top: 15px; 
+    color: var(--primary); 
+    font-weight: 700; 
+    text-decoration: none; 
+}
 /* --- 記事詳細ページ用スタイル --- */
 .post-detail {
     background: var(--bg-card);
@@ -192,10 +226,7 @@ body {
     font-size: 0.95rem;
 }
 .post-hero {
-    margin: 0 -40px 40px -40px; /* カードのパディング分を外に出して全幅表示 */
-}
-.post-hero img {
-    width: 100%;
+    margin: 0 -40px 40px -40px; 
     max-height: 450px;
     object-fit: cover;
 }
@@ -267,12 +298,11 @@ body {
 }
 .post-footer {
     display: flex;
-    justify-content: space-between; /* 左右に振り分け */
+    justify-content: space-between; 
     align-items: center;
     padding-top: 30px;
     border-top: 1px solid #e2e8f0;
 }
-
 /* 戻るボタン */
 .btn-back {
     text-decoration: none;
@@ -317,10 +347,7 @@ body {
     font-size: 0.95rem;
     color: var(--text-main);
 }
-
-/* ==========================================================================
-   5. Forms & Profile Edit (フォーム・プロフィール編集)
-   ========================================================================== */
+/* フォーム要素のスタイル */
 .editor-form input[type="text"],
 .editor-form textarea {
     width: 100%;
@@ -343,7 +370,6 @@ body {
     resize: vertical; /* ユーザーが上下にだけ広げられるように */
     line-height: 1.6;
 }
-
 /* ファイルアップロード部分 */
 .input-file {
     padding: 10px;
@@ -355,8 +381,7 @@ body {
     color: var(--text-sub);
     margin-top: 4px;
 }
-
-/* 公開ボタン（特別な色にする） */
+/* 公開ボタン */
 .btn-submit-action {
     background-color: var(--primary);
     color: white;
@@ -373,7 +398,6 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
 }
-
 /* プロフィール編集画面の全体レイアウト */
 .profile-edit-wrapper {
     display: flex;
@@ -383,7 +407,6 @@ body {
     background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* 柔らかいグラデーション背景 */
     min-height: calc(100vh - 60px);
 }
-
 /* カードスタイル（オシャレに強化） */
 .profile-edit-card {
     background: #ffffff;
@@ -394,12 +417,10 @@ body {
     max-width: 550px;
     transition: transform 0.3s ease;
 }
-
 .card-header {
     text-align: center;
     margin-bottom: 40px;
 }
-
 .form-title {
     margin: 0 0 10px 0;
     font-size: 28px;
@@ -407,20 +428,17 @@ body {
     color: #2c3e50;
     letter-spacing: -0.5px;
 }
-
 .form-subtitle {
     font-size: 15px;
     color: #7f8c8d;
     margin: 0;
 }
-
 /* プロフィール画像エリア（オシャレのポイント） */
 .profile-avatar-section {
     display: flex;
     justify-content: center;
     margin-bottom: 35px;
 }
-
 .avatar-wrapper {
     position: relative;
     width: 120px;
@@ -435,13 +453,11 @@ body {
     justify-content: center; 
     align-items: center;     
 }
-
 .profile-image {
     width: 100%;
     height: 100%;
     object-fit: cover; /* 画像を枠に合わせる */
 }
-
 /* ホバー時のマスク効果 */
 .avatar-hover-mask {
     position: absolute;
@@ -458,30 +474,24 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
-
 .avatar-wrapper:hover .avatar-hover-mask {
     opacity: 1;
 }
-
 .avatar-hover-mask i {
     font-size: 24px;
     margin-bottom: 5px;
 }
-
 .avatar-hover-mask span {
     font-size: 12px;
 }
-
-/* フォーム要素（オシャレに洗練） */
+/* フォーム要素 */
 .form-body {
     margin-bottom: 30px;
 }
-
 .form-group {
     margin-bottom: 25px;
     position: relative;
 }
-
 .form-group label {
     display: block;
     font-weight: 600;
@@ -489,7 +499,6 @@ body {
     margin-bottom: 10px;
     color: #34495e;
 }
-
 .form-group input, 
 .form-group textarea {
     width: 100%;
@@ -501,7 +510,6 @@ body {
     background-color: #fff;
     transition: all 0.2s ease;
 }
-
 /* フォーカス時のオシャレなエフェクト */
 .form-group input:focus, 
 .form-group textarea:focus {
@@ -509,12 +517,10 @@ body {
     border-color: #3498db; /* 青色のアクセント */
     box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1); /* 柔らかい光 */
 }
-
 /* 編集不可フィールド（Cognito Sub） */
 .readonly-field .input-wrapper {
     position: relative;
 }
-
 .readonly-field input {
     background-color: #f8f9fa;
     color: #7f8c8d;
@@ -522,7 +528,6 @@ body {
     cursor: not-allowed;
     padding-right: 40px; /* アイコン分のスペース */
 }
-
 .lock-icon {
     position: absolute;
     right: 15px;
@@ -531,14 +536,12 @@ body {
     color: #bdc3c7;
     font-size: 16px;
 }
-
 .field-help {
     color: #95a5a6;
     font-size: 12px;
     margin-top: 5px;
     display: block;
 }
-
 /* ボタンのデザイン */
 .form-actions {
     display: flex;
@@ -581,7 +584,13 @@ body {
     color: #e74c3c; /* キャンセルは赤色にホバー */
     text-decoration: underline;
 }
-
+/* ==========================================================================
+   Media Queries (モバイル対応)
+   ========================================================================== */
+/* モバイル対応 */
+@media (max-width: 1000px) {
+    .right-space { display: none; }
+}
 /* スマホ対応の調整 */
 @media (max-width: 768px) {
     .post-detail {
@@ -597,40 +606,60 @@ body {
         flex-direction: column;
         gap: 20px;
     }
+    .app-container { 
+        flex-direction: column; 
+        padding: 20px; 
+    }
+    .sidebar { 
+        width: 100%; 
+    }
+    .sidebar-inner { 
+        position: static; 
+    }
+    .main-content { 
+        max-width: 100%; 
+    }    
+    .post-detail { 
+        padding: 20px;
+    }
+    .post-hero { 
+        margin: 0 -20px 20px -20px; 
+    }
+    .post-title { 
+        font-size: 1.5rem; 
+    }
+    .post-footer { 
+        flex-direction: column; 
+        gap: 20px; 
+    }
 }
-/* -------------------------------- */
-/* アニメーション */
-/* -------------------------------- */
+/* ==========================================================================
+   アニメーション
+   ========================================================================== */
 /* 入場時：上から下へ */
 @keyframes slideDown { 
-    from { opacity: 0; transform: translateY(-20px); } 
-    to { opacity: 1; transform: translateY(0); } 
+    from { 
+        opacity: 0; 
+        transform: translateY(-20px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
 }
-
 /* 退場時：下から上へ消えていく */
 @keyframes slideUp {
-    from { opacity: 1; transform: translateY(0); }
-    to { opacity: 0; transform: translateY(-20px); }
+    from { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+    to {
+        opacity: 0; 
+        transform: translateY(-20px); 
+    }
 }
-
 /* JavaScriptで付与するクラス */
 .fade-out {
     animation: slideUp 0.4s ease forwards; /* forwardsでアニメーション後の状態(透明)を維持 */
     pointer-events: none; /* アニメーション中にクリックを無効化 */
-}
-
-/* モバイル対応 */
-@media (max-width: 1000px) {
-    .right-space { display: none; }
-}
-
-@media (max-width: 768px) {
-    .app-container { flex-direction: column; padding: 20px; }
-    .sidebar { width: 100%; }
-    .sidebar-inner { position: static; }
-    .main-content { max-width: 100%; }    
-    .post-detail { padding: 20px;}
-    .post-hero { margin: 0 -20px 20px -20px; }
-    .post-title { font-size: 1.5rem; }
-    .post-footer { flex-direction: column; gap: 20px; }
 }
