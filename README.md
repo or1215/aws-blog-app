@@ -48,7 +48,7 @@ CloudFront (CDN)
 ### バックエンド
 
 | 技術 | 用途 |
-|---|---|---|
+|---|---|
 | Python | メイン言語 |
 | Flask | Webフレームワーク |
 | PyMySQL | MySQLドライバ |
